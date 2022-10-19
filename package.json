@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^1.0.1",
+    "@material-tailwind/react": "^1.2.4",
     "@storybook/react": "^6.5.12",
     "@tailwindcss/typography": "^0.5.7",
     "axios": "^1.1.3",
