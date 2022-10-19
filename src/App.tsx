@@ -1,12 +1,12 @@
-import { AppProvider } from '@/providers/app'
+import { AppProvider } from '@/providers/app';
 import { AppRoutes } from '@/routes';
 
-const App = () => {
+function App() {
   return (
     <AppProvider>
       <AppRoutes />
     </AppProvider>
-  )
+  );
 }
 
 export default App;
