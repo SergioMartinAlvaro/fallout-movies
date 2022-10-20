@@ -1,11 +1,5 @@
 import { Button, IconButton, MobileNav, Navbar, Typography } from '@material-tailwind/react';
 import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-
-type HeadProps = {
-  title?: string;
-  description?: string;
-};
 
 const Sidebar = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -124,13 +118,8 @@ const Sidebar = () => {
 };
 
 
-export const Head = ({ title = '', description = '' }: HeadProps = {}) => {
+export const NavigationBar = () => {
   return (
-    <Helmet
-      title={title ? `${title} | Bulletproof React` : undefined}
-      defaultTitle="Bulletproof React"
-    >
-      <meta name="description" content={description} />
-    </Helmet>
+    <Sidebar></Sidebar>
   );
 };

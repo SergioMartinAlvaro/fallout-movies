@@ -6,6 +6,7 @@ import { MainLayout } from '@/components/Layout';
 import { lazyImport } from '@/utils/lazyImport';
 
 const { Home } = lazyImport(() => import('@/features/misc'), 'Home');
+const { MoviesRoutes } = lazyImport(() => import('@/features/movies'), 'MoviesRoutes');
 
 const App = () => {
   return (
@@ -29,8 +30,10 @@ export const protectedRoutes = [
     element: <App />,
     children: [
       { path: '*', element: <Navigate to="." /> },
+     
     ],
   },
+  {path: '/search/*', element: <MoviesRoutes /> },
   { path: '/', element: <Home /> },
   {
     path: "*", element: <Navigate to="." />
