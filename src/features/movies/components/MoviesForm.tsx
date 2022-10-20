@@ -3,6 +3,8 @@ import * as z from 'zod';
 
 // import { Button } from '@/components/Elements';
 import { Form, InputField } from '@/components/Form';
+import { usePopularMovies } from '../api/getPopularMovies';
+import { useState } from 'react';
 
 const schema = z.object({
     movie: z.string().min(1, "There's not a movie without name :( Please, insert a name."),
@@ -17,6 +19,9 @@ type MoviesFormProps = {
 }
 
 export const MoviesForm = ({onSuccess}: MoviesFormProps) => {
+  const [movies, setMovies] = useState(usePopularMovies({}));
+  const [moviesList, setMoviesList] = useState(movies.data);
+  console.log(movies);
     return (
         <div>
             <Form<MovieValues, typeof schema>
@@ -40,6 +45,17 @@ export const MoviesForm = ({onSuccess}: MoviesFormProps) => {
                 </>
               )}
             </Form>
+            
+            {moviesList?.results.map(movie => {
+              return (
+                <div>
+                <h1>{movie.title}</h1>
+                <p>{movie.overview}</p>
+                <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} />
+
+                </div>
+              )
+            })}
         </div>
     )
 }
