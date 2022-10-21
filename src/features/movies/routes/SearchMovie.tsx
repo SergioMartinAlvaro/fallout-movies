@@ -1,11 +1,14 @@
 import { ContentLayout, MainLayout } from '@/components/Layout';
-import { useEffect, useState } from 'react';
+import React from 'react';
+import { Reducer, useEffect, useReducer, useRef, useState } from 'react';
 import { useMovieFiltered } from '../api/getMovieFiltered';
 import { usePopularMovies } from '../api/getPopularMovies';
 
 import { MoviesForm } from '../components/MoviesForm';
 
+
 export const SearchMovie = () => {
+
   const [query, setQuery] = useState('');
 
   const onSuccess = (value: string) => {
@@ -18,7 +21,7 @@ export const SearchMovie = () => {
   return (
     <MainLayout>
     <ContentLayout title="Search into our catalog">
-      <MoviesForm onSuccess={onSuccess} query={query} movies={query ? searchMovies : displayMovies} />
+        <MoviesForm onSuccess={onSuccess} query={query} movies={query ? searchMovies : displayMovies} />
     </ContentLayout>
     </MainLayout>
   );

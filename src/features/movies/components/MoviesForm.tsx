@@ -1,15 +1,9 @@
-import { Link } from 'react-router-dom';
 import * as z from 'zod';
 
-// import { Button } from '@/components/Elements';
 import { Form, InputField } from '@/components/Form';
-import { usePopularMovies } from '../api/getPopularMovies';
-import { useEffect, useState } from 'react';
 import { Spinner } from '@/components/Elements';
 import { MoviesList } from './MoviesList';
 import { Button } from '@/components/Elements/Button';
-import { useMovieFiltered } from '../api/getMovieFiltered';
-import { MoviesInfoTypes, MovieTypes } from '../types';
 
 const schema = z.object({
     movie: z.string().min(1, "There's not a movie without name :( Please, insert a name."),

@@ -1,7 +1,10 @@
 
 
 import { Spinner } from '@/components/Elements';
+import { useContext } from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { MovieContext } from '../context';
 import { MoviesInfoTypes, MovieTypes } from '../types';
 
 
@@ -10,6 +13,13 @@ type MoviesListProps = {
 };
 
 export const MoviesList = ({ movies }: MoviesListProps) => {
+    const { dispatch } = useContext(MovieContext);
+  const navigate = useNavigate();
+  const setSelectedMovie = (movie: MoviesInfoTypes) => {
+    dispatch({ type: 'SET_MOVIE', value: movie });
+    navigate(`/mylist/${movie.id}`)
+  }
+
   return (
     <div>
 
@@ -27,7 +37,7 @@ export const MoviesList = ({ movies }: MoviesListProps) => {
                     <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
                         {movie.overview}
                     </p>
-                    <a href="#" className='inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-orange-400 rounded-lg hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-100 dark:bg-orange-300 dark:hover:bg-orange-400 dark:focus:ring-orange-400'>
+                    <a onClick={() => setSelectedMovie(movie)} className='inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-orange-400 rounded-lg hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-100 dark:bg-orange-300 dark:hover:bg-orange-400 dark:focus:ring-orange-400'>
                         Read more
                     </a>
                 </div>
