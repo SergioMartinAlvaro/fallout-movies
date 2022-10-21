@@ -22,7 +22,7 @@ type GetPopularMoviesOptions = {
 
 export const usePopularMovies = ({config}: GetPopularMoviesOptions) => {
   return useQuery<ExtractFnReturnType<QueryFnType>>({
-    queryKey: ['comments'],
+    queryKey: [],
     queryFn: () => getPopularMovies(),
     ...config,
   });

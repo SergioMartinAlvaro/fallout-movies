@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import { Spinner } from '@/components/Elements';
 import { MoviesList } from './MoviesList';
 import { Button } from '@/components/Elements/Button';
+import { useMovieFiltered } from '../api/getMovieFiltered';
+import { MoviesInfoTypes, MovieTypes } from '../types';
 
 const schema = z.object({
     movie: z.string().min(1, "There's not a movie without name :( Please, insert a name."),
@@ -18,12 +20,12 @@ type MovieValues = {
 }
 
 type MoviesFormProps = {
-    onSuccess: () => void;
+    onSuccess: Function;
+    movies: any;
+    query: string;
 }
 
-export const MoviesForm = ({onSuccess}: MoviesFormProps) => {
-  const movies = usePopularMovies({});
-
+export const MoviesForm = ({onSuccess, movies, query}: MoviesFormProps) => {
   if (movies.isLoading) {
     return (
       <div className="w-full h-48 flex justify-center items-center">
@@ -35,8 +37,9 @@ export const MoviesForm = ({onSuccess}: MoviesFormProps) => {
     return (
         <div>
             <Form<MovieValues, typeof schema>
-            onSubmit={() => {
-                onSuccess();
+            onSubmit={async (values) => {
+                console.log(values)
+                onSuccess(values.movie)
             }}
             schema={schema}
             > 
@@ -52,7 +55,7 @@ export const MoviesForm = ({onSuccess}: MoviesFormProps) => {
                   />
                   <div>
                     <Button type="submit" className="mt-1 flex-1 w-32 bg-orange-400">
-                      Submit
+                      Search
                     </Button>
                   </div>
                 </div>
