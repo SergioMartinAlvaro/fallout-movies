@@ -543,6 +543,9 @@ video {
 .z-10 {
   z-index: 10;
 }
+.m-auto {
+  margin: auto;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -685,6 +688,9 @@ video {
 }
 .w-24 {
   width: 6rem;
+}
+.w-11\/12 {
+  width: 91.666667%;
 }
 .w-32 {
   width: 8rem;
