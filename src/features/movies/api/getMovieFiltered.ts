@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 
  import { MovieTypes } from '../types';
 
-export const getPopularMovies = async (): Promise<MovieTypes> => {
+export const getMovieFiltered = async (): Promise<MovieTypes> => {
   return axios.get('/movie/popular', {
     params: {
       api_key: '8f781d70654b5a6f2fa69770d1d115a3',
@@ -14,16 +14,16 @@ export const getPopularMovies = async (): Promise<MovieTypes> => {
   })
 }
 
-type QueryFnType = typeof getPopularMovies;
+type QueryFnType = typeof getMovieFiltered;
 
 type GetPopularMoviesOptions = {
   config?: QueryConfig<QueryFnType>
 }
 
-export const usePopularMovies = ({config}: GetPopularMoviesOptions) => {
+export const useSearchMovie = ({config}: GetPopularMoviesOptions) => {
   return useQuery<ExtractFnReturnType<QueryFnType>>({
     queryKey: ['comments'],
-    queryFn: () => getPopularMovies(),
+    queryFn: () => getMovieFiltered(),
     ...config,
   });
 };

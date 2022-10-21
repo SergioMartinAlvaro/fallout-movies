@@ -19,44 +19,14 @@ const Sidebar = () => {
         className="p-1 font-normal"
       >
         <a href="#" className="flex items-center">
-          Pages
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#" className="flex items-center">
-          Account
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#" className="flex items-center">
-          Blocks
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#" className="flex items-center">
-          Docs
+          Ratings
         </a>
       </Typography>
     </ul>
   );
  
   return (
-    <Navbar className="fixed w-screen z-50 mx-auto max-w-screen-2xl py-2 px-4 lg:px-8 lg:py-4 shadow bg-red-400">
+    <Navbar className="fixed max-w-none w-full z-50 mx-auto py-2 px-4 lg:px-8 lg:py-4 shadow bg-orange-400">
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900 text-black">
         <Typography
           as="a"
@@ -68,7 +38,7 @@ const Sidebar = () => {
         </Typography>
         <div className="hidden lg:block">{navList}</div>
         <Button variant="gradient" size="sm" className="hidden lg:inline-block">
-          <span>Buy Now</span>
+          <span>Contact us</span>
         </Button>
         <IconButton
           variant="text"

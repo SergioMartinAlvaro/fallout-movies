@@ -5,7 +5,7 @@ import { SearchMovie } from './SearchMovie';
 export const MoviesRoutes = () => {
   return (
     <Routes>
-      <Route path="movies" element={<SearchMovie />} />
+      <Route path="mylist" element={<SearchMovie />} />
     </Routes>
   );
 };
