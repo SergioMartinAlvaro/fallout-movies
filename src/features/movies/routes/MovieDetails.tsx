@@ -10,7 +10,7 @@ export const MovieDetails = () => {
 
   return (
     <MainLayout>
-    <ContentLayout title={movieState.movie.title}>
+    <ContentLayout title={''}>
       <MovieInfo movie={movieState.movie} />
     </ContentLayout>
     </MainLayout>

@@ -22,8 +22,8 @@ export const MoviesRoutes = () => {
   return (
     <MovieContext.Provider value={store}>
       <Routes>
-        <Route path="mylist" element={<SearchMovie />} />
-        <Route path="mylist/:movieId" element={<MovieDetails />} />
+        <Route path="search" element={<SearchMovie />} />
+        <Route path="search/:movieId" element={<MovieDetails />} />
       </Routes>
     </MovieContext.Provider>
   );

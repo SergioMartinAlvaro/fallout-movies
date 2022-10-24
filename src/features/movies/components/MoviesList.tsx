@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MovieContext } from '../context';
 import { MoviesInfoTypes, MovieTypes } from '../types';
+import strings from '@/utils/strings';
 
 
 type MoviesListProps = {
@@ -17,16 +18,16 @@ export const MoviesList = ({ movies }: MoviesListProps) => {
   const navigate = useNavigate();
   const setSelectedMovie = (movie: MoviesInfoTypes) => {
     dispatch({ type: 'SET_MOVIE', value: movie });
-    navigate(`/mylist/${movie.id}`)
+    navigate(`/search/${movie.id}`)
   }
 
   return (
     <div>
 
-        <div className='grid grid-cols-3 gap-4 max-w-6xl'>
-        {movies?.map((movie: MoviesInfoTypes) => {
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl justify-center'>
+        {movies ? movies?.map((movie: MoviesInfoTypes) => {
             return (
-            <div className='max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700'>
+            <div className='max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 m-auto dark:border-gray-700'>
                 <img className="rounded-t-lg h-96 w-full" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
                 <div className='p-5'>
                     <a href="#">
@@ -37,13 +38,13 @@ export const MoviesList = ({ movies }: MoviesListProps) => {
                     <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
                         {movie.overview}
                     </p>
-                    <a onClick={() => setSelectedMovie(movie)} className='inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-orange-400 rounded-lg hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-100 dark:bg-orange-300 dark:hover:bg-orange-400 dark:focus:ring-orange-400'>
-                        Read more
+                    <a onClick={() => setSelectedMovie(movie)} className='inline-flex items-center cursor-pointer py-2 px-3 text-sm font-medium text-center text-white bg-orange-400 rounded-lg hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-100 dark:bg-orange-300 dark:hover:bg-orange-400 dark:focus:ring-orange-400'>
+                        {strings.movieList.button}
                     </a>
                 </div>
             </div>
             )
-        })}
+        }) : <h1>{strings.movieList.NotFound}</h1>}
         </div>
     </div>
   );

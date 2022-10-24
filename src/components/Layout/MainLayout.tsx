@@ -19,7 +19,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
   return (
-    <div className="h-screen flex overflow-hidden bg-gray-100 ">
+    <div className="h-screen flex overflow-hidden bg-white ">
       <MobileBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <NavigationBar />
       <div className="flex flex-col w-0 flex-1 overflow-hidden">

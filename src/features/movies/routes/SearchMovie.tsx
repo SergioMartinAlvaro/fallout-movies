@@ -1,3 +1,4 @@
+import { LandingHome } from '@/components/LandingHome/LandingHome';
 import { ContentLayout, MainLayout } from '@/components/Layout';
 import React from 'react';
 import { Reducer, useEffect, useReducer, useRef, useState } from 'react';
@@ -20,7 +21,8 @@ export const SearchMovie = () => {
 
   return (
     <MainLayout>
-    <ContentLayout title="Search into our catalog">
+    <ContentLayout title="">
+        <LandingHome />
         <MoviesForm onSuccess={onSuccess} query={query} movies={query ? searchMovies : displayMovies} />
     </ContentLayout>
     </MainLayout>

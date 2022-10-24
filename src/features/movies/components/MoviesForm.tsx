@@ -38,17 +38,17 @@ export const MoviesForm = ({onSuccess, movies, query}: MoviesFormProps) => {
             schema={schema}
             > 
             {({ register, formState }) => (
-                <div className="mb-6 grid grid-cols-2">
+                <div className="mb-6 grid grid-cols-2" id="movies-input">
                   <InputField
                     type="text"
                     label="Movie"
                     placeholder="Insert movie title"
                     error={formState.errors['movie']}
                     registration={register('movie')}
-                    className={''}
+                    className={'bg-white shadow max-w-2xl'}
                   />
                   <div>
-                    <Button type="submit" className="mt-1 flex-1 w-32 bg-orange-400">
+                    <Button type="submit" className="mt-1 shadow ml-1 flex-1 w-32 bg-orange-400">
                       Search
                     </Button>
                   </div>
@@ -56,7 +56,7 @@ export const MoviesForm = ({onSuccess, movies, query}: MoviesFormProps) => {
               )}
             </Form>
             
-            <h2 className='mb-8 text-4xl font-bold tracking-tight text-gray-900 dark:text-white'>Most Popular</h2>
+            <h2 className='mb-8 text-4xl font-bold tracking-tight text-gray-900 dark:text-white'>{query ? `Search Results: ${query}` : 'Most Popular'}</h2>
           <MoviesList movies={movies.data?.results} />
         </div>
     )
